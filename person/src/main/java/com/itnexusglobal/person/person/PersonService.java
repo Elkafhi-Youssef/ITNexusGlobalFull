@@ -60,7 +60,6 @@ public class PersonService {
         personDTO.setLastName(person.getLastName());
         personDTO.setEmail(person.getEmail());
         personDTO.setAddress(person.getAddress());
-        personDTO.setPassword(person.getPassword());
         personDTO.setImage(person.getImage());
         personDTO.setTel(person.getTel());
         personDTO.setLinkedIn(person.getLinkedIn());
