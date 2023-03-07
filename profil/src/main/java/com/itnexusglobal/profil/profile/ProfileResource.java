@@ -36,6 +36,7 @@ public class ProfileResource {
     @PostMapping
     @ApiResponse(responseCode = "201")
     public ResponseEntity<Long> createProfile( @Valid @RequestBody  final ProfileDTO profileDTO) {
+        System.out.println("profileDTO = " + profileDTO.getProfileID());
         return new ResponseEntity<>(profileService.create(profileDTO), HttpStatus.CREATED);
     }
 

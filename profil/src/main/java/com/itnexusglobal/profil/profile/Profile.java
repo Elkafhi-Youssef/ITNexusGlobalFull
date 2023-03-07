@@ -4,15 +4,12 @@ import com.itnexusglobal.profil.education.Education;
 import com.itnexusglobal.profil.experience.Experience;
 import com.itnexusglobal.profil.hobbie.Hobbie;
 import com.itnexusglobal.profil.language.Language;
+import com.itnexusglobal.profil.person.Person;
 import com.itnexusglobal.profil.project.Project;
 import com.itnexusglobal.profil.skill.Skill;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,24 +34,26 @@ public class Profile {
     )
     private Long profileID;
 
-    @OneToMany(mappedBy = "profileExperience")
+    @OneToMany(mappedBy = "profileExperience",fetch = FetchType.EAGER)
     private Set<Experience> profileExperienceExperiences;
 
-    @OneToMany(mappedBy = "prifileEducation")
-    private Set<Education> prifileEducationEducations;
+    @OneToMany(mappedBy = "prifileEducation",fetch = FetchType.EAGER)
+    private List<Education> prifileEducationEducations;
 
-    @OneToMany(mappedBy = "profileProject")
+    @OneToMany(mappedBy = "profileProject",fetch = FetchType.EAGER)
     private Set<Project> profileProjectProjects;
 
-    @OneToMany(mappedBy = "profileSkill")
+    @OneToMany(mappedBy = "profileSkill",fetch = FetchType.EAGER)
     private Set<Skill> profileSkillSkills;
 
-    @OneToMany(mappedBy = "profileLanguage")
+    @OneToMany(mappedBy = "profileLanguage",fetch = FetchType.EAGER)
     private Set<Language> profileLanguageLanguages;
 
-    @OneToMany(mappedBy = "profileHobbie")
+    @OneToMany(mappedBy = "profileHobbie",fetch = FetchType.EAGER)
     private Set<Hobbie> profileHobbieHobbies;
 
     @Column(nullable = false)
     private Long personID;
+    @Transient
+    private Person person;
 }
